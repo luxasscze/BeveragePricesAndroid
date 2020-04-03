@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            mc:Ignorable="d"
+            xmlns:views="clr-namespace:BeveragePrices.Views"
+            x:Class="BeveragePrices.Views.MainPage">
+
+    <TabbedPage.Children>
+        <NavigationPage Title="Spirits">
+            
+            <x:Arguments>
+                <views:Spirits />
+            </x:Arguments>
+        </NavigationPage>
+        
+        <NavigationPage Title="Wines">
+            
+            <x:Arguments>
+                <views:Wines />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Bottled Beers">
+            
+            <x:Arguments>
+                <views:BottledBeers />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Drought Beers">
+
+            <x:Arguments>
+                <views:DroughtBeers />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage Title="Soft Drinks">
+
+            <x:Arguments>
+                <views:SoftDrinks />
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+    
+</TabbedPage>

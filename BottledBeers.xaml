@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="BeveragePrices.Views.BottledBeers">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <ScrollView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+
+                    </Grid.RowDefinitions>
+
+
+
+                    <Label Text="Bottle: "
+                       FontSize="Large"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalOptions="End"
+                       Padding="0,15,0,0"/>
+
+                    <Picker x:Name="bottledBeerSelect"                    
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        FontSize="Large"                    
+                        TextColor="Black"
+                        SelectedIndexChanged="onBottledBeerSelect">
+
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+
+                                <x:String>Budweiser</x:String>
+                                <x:String>Budweiser Prohibition</x:String>
+
+
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+            </ScrollView>
+
+            <ScrollView>
+
+                <Grid Padding="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="BudweiserNrb.jpg"
+                   Grid.Column="0"
+                   Grid.RowSpan="8"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   x:Name="bottledBeerImage"/>
+
+                    <Label Text="Buy Price: £"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontSize="Large"/>
+                    <Label Text="Sell Price: £"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="4"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontSize="Large"/>                    
+                    <Label Text="Profit Per Bottle: £"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="5"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontSize="Large"/>
+
+                    <Label Text="0"
+                   FontAttributes="Bold"
+                   Grid.Column="2"
+                   Grid.Row="3"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   x:Name="buyPriceTextBottledBeer"
+                   FontSize="Large"/>
+                    <Label Text="0"
+                   FontAttributes="Bold"
+                   Grid.Column="2"
+                   Grid.Row="4"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   x:Name="sellPriceTextBottledBeer"
+                   FontSize="Large"/>                    
+                    <Label Text="0"
+                   FontAttributes="Bold"
+                   Grid.Column="2"
+                   Grid.Row="5"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   x:Name="profitPerBottleTextBottledBeer"
+                   FontSize="Large"/>
+                </Grid>
+            </ScrollView>
+            <ScrollView>
+
+                <Grid Padding="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame BackgroundColor="Indigo"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="3"
+                   Grid.RowSpan="6"
+                   VerticalOptions="Fill">
+                        <Label Text="Update Prices"
+                       TextColor="White"
+                       FontSize="Title"
+                       HorizontalTextAlignment="Center"/>
+
+                    </Frame>
+
+                    <Label Text="Buy Price: £"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       HorizontalOptions="End"
+                       Padding="0,13,0,0"/>
+                    <Entry Text=""
+                       x:Name="buyPriceInputBottledBeer"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       HorizontalOptions="StartAndExpand"
+                       WidthRequest="100"
+                       Placeholder="Enter Price"
+                       PlaceholderColor="Fuchsia"
+                       Keyboard="Telephone"
+                       Unfocused="onBuyPriceInputBottledBear"/>
+
+                    <Label Text="Sell Price: £"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       HorizontalOptions="End"
+                       Padding="0,13,0,0"/>
+                    <Entry Text=""
+                       x:Name="sellPriceInputBottledBeer"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       HorizontalOptions="StartAndExpand"
+                       WidthRequest="100"
+                       Placeholder="Enter Price"
+                       PlaceholderColor="Fuchsia"
+                       Keyboard="Telephone"
+                       Unfocused="onSellPriceInputBottledBeer"/>
+
+                    
+
+
+
+                </Grid>
+            </ScrollView>
+           
+
+            
+            <Grid BackgroundColor="White" Padding="10,0,10,0">
+                <Button Text="Export to Excel"
+                FontAttributes="Bold"
+                FontSize="Large"
+                TextColor="Indigo"
+                Padding="0,5,0,0"
+                BackgroundColor="White"
+                    BorderColor="Indigo"  
+                    BorderWidth="1"
+                Grid.Row="0"
+                    Clicked="onExportExcelBottledBeer"/>
+                <Button Text="Export to PDF"
+                FontAttributes="Bold"
+                FontSize="Large"
+                TextColor="Indigo"
+                Padding="0,5,0,0"
+                BackgroundColor="White"
+                    BorderColor="Indigo"  
+                    BorderWidth="1"
+                Grid.Row="1"
+                    Clicked="onExportPDFBottledBeer"/>
+                <Button Text="Send via Email"
+                FontAttributes="Bold"
+                FontSize="Large"
+                TextColor="Indigo"
+                Padding="0,5,0,0"
+                BackgroundColor="White"
+                    BorderColor="Indigo"  
+                    BorderWidth="1"
+                Grid.Row="2"
+                    Clicked="onSendViaEmailBottledBeer"/>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

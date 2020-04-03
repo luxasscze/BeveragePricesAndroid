@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="BeveragePrices.Views.Spirits"
+             xmlns:vm="clr-namespace:BeveragePrices.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Synconline" Clicked="SpiritsOnlineSync" Text="Upload"></ToolbarItem>
+        <ToolbarItem x:Name="Synconline2" Clicked="SpiritsOnlineSyncDownload" Text="Download"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout BackgroundColor="White">
+        <ScrollView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                </Grid.RowDefinitions>
+
+
+
+                <Label Text="Bottle: "
+                       FontSize="Large"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalOptions="End"
+                       Padding="0,15,0,0"/>
+
+                <Picker x:Name="spiritSelect"                    
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        FontSize="Large"                    
+                        TextColor="Black"
+                        SelectedIndexChanged="onSpiritSelect">
+
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+
+                            <x:String>Abelour 10 Yrs Old</x:String>
+                            <x:String>Absolut Original</x:String>
+                            <x:String>Aperol</x:String>
+                            <x:String>Archers Whiskey</x:String>
+                            <x:String>Bacardi Carta Blanca</x:String>
+                            <x:String>Baileys</x:String>
+                            <x:String>Beefeater</x:String>
+                            <x:String>Blue Monkey Gin</x:String>
+                            <x:String>Blue Monkey Mango And Passion Fruit Gin</x:String>
+                            <x:String>Blue Monkey Rhubarb And Custard Gin</x:String>
+                            <x:String>Blue Monkey Salted Caramel Gin</x:String>
+                            <x:String>Blue Monkey Seville Orange Gin</x:String>
+                            <x:String>Blue Monkey Summer Berries Gin</x:String>
+                            <x:String>Bombay Sapphire</x:String>
+                            <x:String>Bowmore 12 Yrs Old</x:String>
+                            <x:String>Bulleit Bourbon Frontier Whiskey</x:String>
+                            <x:String>Campari</x:String>
+                            <x:String>Captain Morgan Rum</x:String>
+                            <x:String>Captain Morgan Spiced Rum</x:String>
+                            <x:String>Cointreau</x:String>
+                            <x:String>Courvoisier XO</x:String>
+                            <x:String>Creme De Cassis</x:String>
+                            <x:String>Disaronno</x:String>
+                            <x:String>Eristoff Vodka</x:String>
+                            
+
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+        </ScrollView>
+        <ScrollView>
+
+            <Grid Padding="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <Image Source="Aberlour10YearOld.jpg"
+                   Grid.Column="0"
+                   Grid.RowSpan="8"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   x:Name="spiritImage"/>
+
+                <Label Text="Buy Price: £"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontSize="Large"/>
+                <Label Text="Sell Price: £"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontSize="Large"/>
+                <Label Text="25ml Sell Price: £"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontSize="Large"/>
+                <Label Text="50ml Sell Price: £"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="4"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontSize="Large"/>
+                <Label Text="Profit Per Bottle: £"
+                   FontAttributes="Bold"
+                   Grid.Column="1"
+                   Grid.Row="5"
+                   VerticalOptions="Center"
+                   HorizontalOptions="End"
+                   FontSize="Large"/>
+
+                <Label Text="0"
+                   FontAttributes="Bold"
+                   Grid.Column="2"
+                   Grid.Row="1"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   x:Name="buyPriceText"
+                   FontSize="Large"/>
+                <Label Text="0"
+                   FontAttributes="Bold"
+                   Grid.Column="2"
+                   Grid.Row="2"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   x:Name="sellPriceText"
+                   FontSize="Large"/>
+                <Label Text="0"
+                   FontAttributes="Bold"
+                   Grid.Column="2"
+                   Grid.Row="3"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   x:Name="ml25PriceText"
+                   FontSize="Large"/>
+                <Label Text="0"
+                   FontAttributes="Bold"
+                   Grid.Column="2"
+                   Grid.Row="4"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   x:Name="ml50PriceText"
+                   FontSize="Large"/>
+                <Label Text="0"
+                   FontAttributes="Bold"
+                   Grid.Column="2"
+                   Grid.Row="5"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   x:Name="profitPerBottleText"
+                   FontSize="Large"/>
+            </Grid>
+        </ScrollView>
+        <ScrollView>
+
+            <Grid Padding="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Frame BackgroundColor="Indigo"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="3"
+                   Grid.RowSpan="6"
+                   VerticalOptions="FillAndExpand">
+                    <Label Text="Update Prices"
+                       TextColor="White"
+                       FontSize="Title"
+                       HorizontalTextAlignment="Center"/>
+
+                </Frame>
+
+                <Label Text="Buy Price: £"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       HorizontalOptions="End"
+                       Padding="0,13,0,0"/>
+                <Entry Text=""
+                       x:Name="buyPriceInput"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="2"
+                       Grid.Column="1"
+                       HorizontalOptions="StartAndExpand"
+                       WidthRequest="100"
+                       Placeholder="Enter Price"
+                       PlaceholderColor="Fuchsia"
+                       Keyboard="Telephone"
+                       Unfocused="onBuyPriceInput"/>
+
+                <Label Text="Sell Price: £"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       HorizontalOptions="End"
+                       Padding="0,13,0,0"/>
+                <Entry Text=""
+                       x:Name="sellPriceInput"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       HorizontalOptions="StartAndExpand"
+                       WidthRequest="100"
+                       Placeholder="Enter Price"
+                       PlaceholderColor="Fuchsia"
+                       Keyboard="Telephone"
+                       Unfocused="onSellPriceInput"/>
+
+                <Label Text="25ml Sell Price: £"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="4"
+                       Grid.Column="0"
+                       HorizontalOptions="End"
+                       Padding="0,13,0,0"/>
+                <Entry Text=""
+                       x:Name="ml25sellPriceInput"
+                       TextColor="White"
+                       FontSize="Large"
+                       Grid.Row="4"
+                       Grid.Column="1"
+                       HorizontalOptions="StartAndExpand"
+                       WidthRequest="100"
+                       Placeholder="Enter Price"
+                       PlaceholderColor="Fuchsia"
+                       Keyboard="Telephone"
+                       Unfocused="onMl25SellPriceInput"/>
+
+
+
+            </Grid>
+        </ScrollView>
+        <Grid BackgroundColor="White" Padding="10,0,10,0">
+            
+            <Button Text="Export to Excel"
+                FontAttributes="Bold"
+                FontSize="Large"
+                TextColor="Indigo"
+                Padding="0,5,0,0"
+                BackgroundColor="White"
+                    BorderColor="Indigo"  
+                    BorderWidth="1"
+                Grid.Row="0"
+                    Clicked="onExportExcel"/>
+            <Button Text="Export to PDF"
+                FontAttributes="Bold"
+                FontSize="Large"
+                TextColor="Indigo"
+                Padding="0,5,0,0"
+                BackgroundColor="White"
+                    BorderColor="Indigo"  
+                    BorderWidth="1"
+                Grid.Row="1"
+                    Clicked="onExportPDF"/>
+            <Button Text="Send via Email"
+                FontAttributes="Bold"
+                FontSize="Large"
+                TextColor="Indigo"
+                Padding="0,5,0,0"
+                BackgroundColor="White"
+                    BorderColor="Indigo"  
+                    BorderWidth="1"
+                Grid.Row="2"
+                    Clicked="onSendViaEmail"/>
+        </Grid>
+
+        
+        
+
+    </StackLayout>
+
+
+
+</ContentPage>
